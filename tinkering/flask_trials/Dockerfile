@@ -19,6 +19,7 @@ COPY style.css static/style.css
 ADD tabledef.py tabledef.py
 ADD dummy.py dummy.py
 # RUN python hello.py
+RUN python tabledef.py && python dummy.py
 
 EXPOSE 4000
 ENV PORT 4000
