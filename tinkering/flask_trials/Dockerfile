@@ -14,7 +14,7 @@ RUN mkdir templates/ static/
 COPY hello.py hello.py
 COPY app.py app.py
 COPY login.html templates/login.html
-COPY styles.css static/styles.css
+COPY style.css static/style.css
 # RUN python hello.py
 
 EXPOSE 4000
