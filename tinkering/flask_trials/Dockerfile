@@ -10,10 +10,11 @@ RUN apt-get install --upgrade virtualenv -y
 RUN apt-get install vim -y
 RUN pip install Flask
 # RUN mkdir app/
-RUN mkdir templates/
+RUN mkdir templates/ static/
 COPY hello.py hello.py
 COPY app.py app.py
 COPY login.html templates/login.html
+COPY styles.css static/styles.css
 # RUN python hello.py
 
 EXPOSE 4000
