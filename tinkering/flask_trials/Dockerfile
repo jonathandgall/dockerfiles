@@ -12,7 +12,6 @@ RUN pip install Flask
 RUN pip install Flask-SqlAlchemy
 RUN mkdir templates/ static/
 
-ADD hello.py hello.py
 ADD app.py app.py
 ADD login.html templates/login.html
 ADD style.css static/style.css
