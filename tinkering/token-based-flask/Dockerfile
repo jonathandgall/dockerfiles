@@ -15,9 +15,14 @@ RUN echo "root:Docker!" | chpasswd
 
 RUN pip install flask coverage flask-script flask_bcrypt flask-SQLAlchemy
 RUN git clone https://github.com/realpython/flask-jwt-auth.git; cd flask-jwt-auth; git checkout tags/1.0.0 -b jwt-auth
+
+WORKDIR flask-jwt-auth
+RUN pwd 
+
 RUN virtualenv token 
 RUN /bin/bash -c "source token/bin/activate"
-RUN pip install -r flask-jwt-auth/requirements.txt
+RUN ls
+RUN pip install -r requirements.txt
 RUN apt-get update
 
 USER postgres
@@ -32,16 +37,18 @@ RUN echo "listen_addresses='*'" >> /etc/postgresql/9.3/main/postgresql.conf
 VOLUME  ["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
 CMD ["/usr/lib/postgresql/9.3/bin/postgres", "-D", "/var/lib/postgresql/9.3/main", "-c", "config_file=/etc/postgresql/9.3/main/postgresql.conf"]
 USER root
-RUN sed -i -e 's/something/flask_jwt_auth/g' flask-jwt-auth/project/server/config.py
+RUN sed -i -e 's/something/flask_jwt_auth/g' project/server/config.py
 ENV APP_SETTINGS "project.server.config.DevelopmentConfig"
 
-COPY test__config_01.py /flask_jwt_auth//project/tests/test__config.py
-#RUN flask-jwt-auth/manage.py test
+COPY test__config_01.py project/tests/test__config.py
+RUN python manage.py test
+
+COPY 
 
 EXPOSE 4001 5432
 ENV PORT 4001
 
-RUN service postgresql start
+#RUN service postgresql start
 #USER me
 
 
