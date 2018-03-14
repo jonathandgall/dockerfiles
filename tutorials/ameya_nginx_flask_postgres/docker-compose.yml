@@ -13,7 +13,7 @@ services:
   flaskapp:
     build: .
     env_file:
-      - env_file    
+      - env_file
     volumes:
       - .:/opt/services/flaskapp/src
     networks:
@@ -31,7 +31,7 @@ services:
       - web_nw
     depends_on: 
       - flaskapp
-networks: 
+networks:
   db_nw:
     driver: bridge
   web_nw:
