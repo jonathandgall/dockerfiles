@@ -4,6 +4,8 @@ version: '3'
 services:
   db:
     image: "postgres:9.6.5"
+    volumes:
+      - "dbdata:/var/lib/postgresql/data"
     env_file:
       - env_file
     networks:
@@ -28,3 +30,5 @@ networks:
     driver: bridge
   web_nw:
     driver: bridge
+volumes:
+  dbdata:
