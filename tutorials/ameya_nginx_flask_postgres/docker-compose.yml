@@ -1,3 +1,5 @@
+# Source: http://www.ameyalokare.com/docker/2017/09/20/nginx-flask-postgres-docker-compose.html
+ 
 version: '3'
 services:
   db:
