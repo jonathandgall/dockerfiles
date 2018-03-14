@@ -2,6 +2,8 @@ version: '3'
 services:
   db:
     image: "postgres:9.6.5"
+    env_file:
+      - env_file
     networks:
       - db_nw
   flaskapp:
