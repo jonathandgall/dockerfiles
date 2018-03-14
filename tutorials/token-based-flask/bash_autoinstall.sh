@@ -1,4 +1,8 @@
 #! /bin/bash
+
+#exit when error appears
+set -e
+
 clear
 echo "Script installing the Dockerfiles for an automatic setup of our system
 "
