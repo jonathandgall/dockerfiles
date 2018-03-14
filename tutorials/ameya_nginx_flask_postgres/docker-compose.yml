@@ -3,7 +3,7 @@ services:
   db:
     image: "postgres:9.6.5"
     env_file:
-      - env_file
+      - database.py
     networks:
       - db_nw
   flaskapp:
@@ -13,9 +13,10 @@ services:
     networks:
       - db_nw
       - web_nw
-    nginx:
-      images: "nginx:1.13.5"
-      ports: "8080:80"
+  nginx:
+    image: "nginx:1.13.5"
+    ports:
+      - "8080:80"
     volumes:
       - ./conf.d:/etc/nginx/conf.d
     networks:
